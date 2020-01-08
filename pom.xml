@@ -9,7 +9,7 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.example</groupId>
-  <artifactId>angularjs</artifactId>
+  <artifactId>Pet-patrol</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>angularjs</name>
   <description>Demo for angularjs</description>
