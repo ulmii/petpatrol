@@ -1,0 +1,36 @@
+server:
+  port: ${PORT:9000}
+
+file:
+  upload-dir=upload-dir
+
+spring:
+    servlet:
+      multipart:
+        enabled: true
+        file-size-threshold: 2KB
+        max-file-size: 200MB
+        max-request-size: 215MB
+
+database:
+  users:
+    - id: 1
+      name: namakao
+      email: namakao@gmail.com
+      events:
+        - 1
+
+  events:
+    - id: 1
+      title: piesek :((
+      address: Przytkowice 34-141
+      pictures:
+        - 1
+        - 2
+
+  pictures:
+    - id: 1
+      path: http://localhost:9000/img/lifebuoy.png
+    - id: 2
+      path: http://localhost:9000/img/petpatrol.png
+
