@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <link href="bower_components/font-awesome/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body ng-app="petPatrolApp" >
+<div ng-controller="LoginCtrl" style="height: 100%">
+  <div class="py-5 text-center h-100 w-100 d-flex justify-content-center flex-column" style="background-image: url('images/bg.png');background-size:cover;" >
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto col-md-6 col-10 bg-white p-5" style="border-radius: 30px">
+          <h1 class="mb-4">Log in</h1>
+          <form>
+            <div class="form-group"> <input ng-model="email" type="email" class="form-control" placeholder="Enter email" id="form9"> </div>
+            <div class="form-group mb-3"> <input ng-model="password" type="password" class="form-control" placeholder="Password" id="form10"> <small class="form-text text-muted text-right">
+              <a href="#"> Recover password</a>
+            </small> </div> <button ng-click="checkCredentials()" type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="bower_components/jquery/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script type="text/javascript" src="bower_components/popper/popper.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/controllers/login.js"></script>
+</body>
+</html>
