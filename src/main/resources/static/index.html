@@ -13,6 +13,7 @@
 </head>
 
 <body ng-controller="MainCtrl">
+<div style="z-index: 99">
 <nav class="fixed-top">
   <div class="float-right mr-3 mt-3">
     <a href="/login.html" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Zaloguj się do serwisu ratownika">
@@ -21,7 +22,7 @@
   </div>
 </nav>
 
-<div class="py-5 text-center w-100 h-100 d-flex flex-column justify-content-center" style="background: url('images/bg.png');background-size:cover;">
+<div class="py-5 text-center w-100 h-100 d-flex flex-column justify-content-center" style="background: lightskyblue;background-size:cover;">
   <div class="container">
     <div class="row">
       <div class="bg-white p-5 col-md-8 col-10 mx-auto shadow justify-content-center"  style="border-radius: 30px">
@@ -33,6 +34,9 @@
     </div>
   </div>
 </div>
+
+</div>
+<img foot style="position: fixed; bottom:0; left:0; z-index: 0" src="images/koty.svg"/>
 
 <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -47,6 +51,8 @@
 <script type="text/javascript" src="scripts/factories/autocomplete-data.js"></script>
 <script type="text/javascript" src="scripts/directives/autocomplete.js"></script>
 <script type="text/javascript" src="bower_components/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+
 <script>
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
