@@ -1,8 +1,15 @@
 'use strict';
 angular.module('petPatrolApp')
     .controller('DashboardCtrl', ['$scope', '$rootScope', '$http', 'eventDataService', function ($scope, $rootScope, $http, eventDataService) {
-        $scope.events = null;
-        $scope.selectedEvent = null;
+      $scope.events = null;
+      $scope.selectedEvent = null;
+      $scope.selectedCategory = 'new';
+      $scope.categoryMap = {
+          new: 'Nowe',
+          mine: "Moje",
+          done: "Zamknięte",
+          rejected: "Odrzucone"
+        };
 
         $scope.selectEvent = function (event) {
           if(event.status === 'NEW') {
@@ -11,6 +18,7 @@ angular.module('petPatrolApp')
         };
 
         $scope.selectCategory = function (category) {
+          $scope.selectedCategory = $scope.categoryMap[category];
           eventDataService.search(category).then(function (autocompleteResults) {
             $scope.events = autocompleteResults;
             $scope.selectedEvent = null;
@@ -18,6 +26,7 @@ angular.module('petPatrolApp')
         };
 
         $scope.getUserEvents = function () {
+          $scope.selectedCategory = $scope.categoryMap['mine'];
           $http.get("/users/" + 1 + "/events").then(function (response) {
             $scope.events = response.data;
             $scope.selectedEvent = null;
