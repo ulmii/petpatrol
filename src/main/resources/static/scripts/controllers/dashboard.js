@@ -5,14 +5,16 @@ angular.module('petPatrolApp')
         $scope.selectedEvent = null;
 
         $scope.init = function() {
-            $http.get("/events/new").then(function (response) {
+            $http.get("/events?type=new").then(function (response) {
                 $scope.events = response.data;
                 console.log(response.data);
             });
         };
 
         $scope.selectEvent = function (event) {
-          $scope.selectedEvent = event;
+          if(event.status === 'NEW') {
+            $scope.selectedEvent = event;
+          }
         };
 
         $scope.getUserEvents = function () {
