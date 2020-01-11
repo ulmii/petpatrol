@@ -11,8 +11,8 @@
   <groupId>com.example</groupId>
   <artifactId>Pet-patrol</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>angularjs</name>
-  <description>Demo for angularjs</description>
+  <name>Pet Patrol</name>
+  <description>Pet Patrol - Project</description>
 
   <properties>
     <java.version>1.8</java.version>
