@@ -1,15 +1,8 @@
 'use strict';
 angular.module('petPatrolApp')
-    .controller('DashboardCtrl', ['$scope', '$rootScope', '$http', '$window', '$timeout', function ($scope, $rootScope, $http) {
+    .controller('DashboardCtrl', ['$scope', '$rootScope', '$http', 'eventDataService', function ($scope, $rootScope, $http, eventDataService) {
         $scope.events = null;
         $scope.selectedEvent = null;
-
-        $scope.init = function() {
-            $http.get("/events?type=new").then(function (response) {
-                $scope.events = response.data;
-                console.log(response.data);
-            });
-        };
 
         $scope.selectEvent = function (event) {
           if(event.status === 'NEW') {
@@ -17,11 +10,17 @@ angular.module('petPatrolApp')
           }
         };
 
+        $scope.selectCategory = function (category) {
+          eventDataService.search(category).then(function (autocompleteResults) {
+            $scope.events = autocompleteResults;
+            $scope.selectedEvent = null;
+          });
+        };
+
         $scope.getUserEvents = function () {
           $http.get("/users/" + 1 + "/events").then(function (response) {
             $scope.events = response.data;
             $scope.selectedEvent = null;
-            console.log(response.data);
           });
         };
 
