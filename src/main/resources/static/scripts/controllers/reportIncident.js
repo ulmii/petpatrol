@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('petPatrolApp')
-  .controller('reportIncidentCtrl', ['$scope', '$rootScope', '$http', '$window', '$timeout', function ($scope, $rootScope, $http, $window, $timeout) {
+  .controller('reportIncidentCtrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
     $scope.incident = "Wybierz rodzaj zgłoszenia";
     $scope.inne = null;
     $scope.location = null;

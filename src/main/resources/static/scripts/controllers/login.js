@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('petPatrolApp')
-    .controller('LoginCtrl', ['$scope', '$rootScope', '$http', '$window', '$timeout', function ($scope, $rootScope, $http, $window, $timeout) {
+    .controller('LoginCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
         $scope.isFailed = false;
 
         $scope.checkCredentials = function () {
