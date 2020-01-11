@@ -58,30 +58,6 @@ public class EventController
     {
         configuration.getEvents().add(event);
     }
-    //    @GetMapping("events/new")
-    //    public List<Event> getNewEvents()
-    //    {
-    //        return configuration.getEvents().stream()
-    //                .filter(event -> event.getStatus().equals(Event.Status.NEW))
-    //                .collect(Collectors.toList());
-    //    }
-    //
-    //    @GetMapping("events/rejected")
-    //    public List<Event> getRejectedEvents()
-    //    {
-    //        return configuration.getEvents().stream()
-    //                .filter(event -> event.getStatus().equals(Event.Status.REJECTED))
-    //                .collect(Collectors.toList());
-    //    }
-    //
-    //    @GetMapping("events/done")
-    //    public List<Event> getDoneEvents()
-    //    {
-    //        return configuration.getEvents().stream()
-    //                .filter(event -> event.getStatus().equals(Event.Status.DONE))
-    //                .collect(Collectors.toList());
-
-//    }
 
     @GetMapping("users/{id}/events")
     public List<Event> getUserEvents(@PathVariable Long id)

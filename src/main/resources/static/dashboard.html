@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
   <link href="bower_components/font-awesome/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/bower_components/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
@@ -24,7 +25,9 @@
   <nav id="sidebar">
     <div style="position: fixed; width: 250px">
       <div class="sidebar-header">
+        <a href="index.html">
         <img class="img-fluid" alt="Logo" src="images/petpatrol.png"/>
+        </a>
       </div>
 
       <ul class="list-unstyled components">
@@ -83,7 +86,7 @@
               <i class="fas fa-align-left"></i>
               <span>Panel ratownika</span>
             </button>
-            <button ng-if="selectedEvent != null" class="btn-primary btn ml-4" ng-click="selectEvent(null)">Wroc</button>
+            <button ng-if="selectedEvent != null" class="btn-primary btn ml-4" ng-click="selectCategory('new')">Wroc</button>
             <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fas fa-align-justify"></i>
             </button>
@@ -139,10 +142,12 @@
             <h5 class="card-title">{{selectedEvent.location}}</h5>
             <div class="row">
               <div class="col-md-12">
-                <div class="carousel slide" data-ride="carousel" id="carousel">
+                <div class="carousel slide" data-ride="carousel" id="carousel" data-interval="1500">
                   <div class="carousel-inner">
                     <div class="carousel-item" ng-class="$index == 0 ? 'active' : ''" ng-repeat="picture in selectedEvent.pictures">
+                      <a class="fancybox" rel="gallery1" href="{{picture.path}}">
                       <img style="max-height: 500px" class="d-block img-fluid w-100" src="{{picture.path}}">
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -168,7 +173,7 @@
 </div>
 
 
-<script type="text/javascript" src="bower_components/jquery/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="bower_components/popper/popper.min.js"></script>
@@ -176,6 +181,8 @@
 <script type="text/javascript" src="scripts/app.js"></script>
 <script type="text/javascript" src="scripts/factories/event-data.js"></script>
 <script type="text/javascript" src="scripts/controllers/dashboard.js"></script>
+<script type="text/javascript" src="bower_components/fancybox/source/jquery.fancybox.pack.js"></script>
+
 <script type="text/javascript">
   let width = $(window).width();
   $("#navbar").width(width - 350);
@@ -190,6 +197,14 @@
   $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
       $('#sidebar').toggleClass('active');
+    });
+  });
+
+  $(document).ready(function() {
+    $(".fancybox").fancybox({
+      openEffect	: 'none',
+      closeEffect	: 'none',
+      type: 'image'
     });
   });
 </script>
