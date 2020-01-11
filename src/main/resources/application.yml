@@ -18,19 +18,30 @@ database:
       name: namakao
       email: namakao@gmail.com
       events:
-        - 1
 
   events:
     - id: 1
-      title: piesek :((
+      title: Pieskowi jest smutno :((
       address: Przytkowice 34-141
+      description: takiemu o pieskowi jest bardzo smutno
       pictures:
-        - 1
-        - 2
+        - id: 1
+          path: http://localhost:9000/images/piesek.jpg
+        - id: 2
+          path: http://localhost:9000/images/piesek2.jpg
+    - id: 2
+      title: Temu tez smutno :((
+      address: Krakow 30-392
+      description: ojej :(
+      pictures:
+        - id: 1
+          path: http://localhost:9000/images/piesek.jpg
+        - id: 2
+          path: http://localhost:9000/images/piesek2.jpg
 
   pictures:
     - id: 1
-      path: http://localhost:9000/img/lifebuoy.png
+      path: http://localhost:9000/images/piesek.jpg
     - id: 2
       path: http://localhost:9000/img/petpatrol.png
 

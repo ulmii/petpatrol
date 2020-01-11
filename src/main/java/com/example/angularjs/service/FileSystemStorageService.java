@@ -1,6 +1,5 @@
 package com.example.angularjs.service;
 
-import com.example.angularjs.configuration.DatabaseConfiguration;
 import com.example.angularjs.configuration.StorageProperties;
 import com.example.angularjs.exception.StorageException;
 import com.example.angularjs.exception.StorageFileNotFoundException;

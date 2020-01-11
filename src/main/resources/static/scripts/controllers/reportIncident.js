@@ -64,7 +64,7 @@ angular.module('petPatrolApp')
         location: $scope.location,
         description: $scope.description,
         email: $scope.email,
-        pictures: pictureId
+        pictures: pictures
       };
 
       setTimeout(function () {
@@ -94,7 +94,7 @@ $('#myModal').on('shown.bs.modal', function () {
 // ************************ Drag and drop ***************** //
 let dropArea = document.getElementById("drop-area");
 let filesToUpload = [];
-let pictureId = [];
+let pictures = [];
 
 // Prevent default drag behaviors
 ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -191,7 +191,7 @@ function uploadFile(file, i) {
   xhr.addEventListener('readystatechange', function (e) {
     if (xhr.readyState == 4 && xhr.status == 200) {
       updateProgress(i, 100);
-      pictureId.push(xhr.response.id);
+      pictures.push(xhr.response);
     } else if (xhr.readyState == 4 && xhr.status != 200) {
       // Error. Inform the user
     }

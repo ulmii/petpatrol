@@ -2,10 +2,7 @@
 
 angular
   .module('petPatrolApp', [
-    'ngCookies',
-    'ngResource',
     'ngRoute',
-    'ngSanitize'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
