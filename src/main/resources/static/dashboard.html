@@ -90,7 +90,7 @@
             <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fas fa-align-justify"></i>
             </button>
-            <form class="ml-4 form-inline">
+            <form ng-show="selectedEvent == null" class="ml-4 form-inline">
               <div class="input-group">
                 <input ng-model="searchTerm" ng-change="search()" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search">
                 <div class="input-group-append"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></div>
@@ -127,6 +127,7 @@
                     <div class="card-body">
                       <h4 class="card-title">{{event.title}}</h4>
                       <p class="card-text">{{event.description}}</p>
+                      <p class="card-text">Lokalizacja: {{event.location}}</p>
                     </div>
                   </div>
                 </div>
@@ -144,10 +145,9 @@
         <div class="py-5 mx-auto">
           <div class="container">
             <h4 class="card-title">{{selectedEvent.title}}</h4>
-            <h5 class="card-title">{{selectedEvent.location}}</h5>
             <div class="row">
               <div class="col-md-12">
-                <div class="carousel slide" data-ride="carousel" id="carousel" data-interval="1500">
+                <div class="carousel slide" data-ride="carousel" id="carousel" data-interval="3000">
                   <div class="carousel-inner">
                     <div class="carousel-item" ng-class="$index == 0 ? 'active' : ''" ng-repeat="picture in selectedEvent.pictures">
                       <a class="fancybox" rel="gallery1" href="{{picture.path}}">
@@ -160,15 +160,29 @@
               </div>
               <div class="card-body">
                 <p class="card-text">{{selectedEvent.description}}</p>
+                <p class="card-text">Lokalizacja: {{selectedEvent.location}}</p>
               </div>
             </div>
           </div>
         </div>
         <div class="py-5">
           <div class="container">
-            <div class="row">
-              <div class="col-md-6 d-flex justify-content-center"><a class="btn btn-primary w-50" href="#">Odrzuć</a></div>
-              <div class="col-md-6 d-flex flex-row align-items-center justify-content-center"><a class="btn btn-primary w-50" ng-click="acceptEvent(selectedEvent.id)" href="#">Akceptuj</a></div>
+            <div ng-if="selectedCategory === categoryMap['new']" class="row">
+              <div class="col-md-6 d-flex justify-content-center"><a class="btn btn-primary w-50" href="#" ng-click="rejectEvent(selectedEvent.id)">Odrzuć</a></div>
+              <div class="col-md-6 d-flex flex-row align-items-center justify-content-center"><a class="btn btn-primary w-50" ng-click="acceptEvent(selectedEvent.id);" href="#">Akceptuj</a></div>
+            </div>
+            <div ng-if="selectedCategory !== categoryMap['new']">
+              <div class="btn-group">
+                <button style="width: 200px" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{statusMap[selectedEvent.status]}}</button>
+                <div class="dropdown-menu">
+                  <a href="#" class="dropdown-item" ng-click="resetEvent(selectedEvent.id)">Nowe</a>
+                  <a ng-if="selectedEvent.status != 'TAKEN'" ng-click="acceptEvent(selectedEvent.id)" href="#" class="dropdown-item">Przyjęte</a>
+                  <a ng-if="selectedEvent.status != 'REJECTED'" href="#" class="dropdown-item" ng-click="rejectEvent(selectedEvent.id)">Odrzucone</a>
+                  <div class="dropdown-divider"></div>
+                  <a ng-if="selectedEvent.status != 'DONE'" href="#" class="dropdown-item" ng-click="completeEvent(selectedEvent.id)">Zakończone</a>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>

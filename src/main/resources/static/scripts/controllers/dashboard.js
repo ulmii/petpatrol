@@ -6,6 +6,12 @@ angular.module('petPatrolApp')
     $scope.selectedEvent = null;
     $scope.selectedCategory = 'new';
     $scope.searchTerm = null;
+    $scope.statusMap = {
+      "NEW": 'Nowe',
+      "REJECTED": 'Odrzucone',
+      "DONE": 'Zakończone',
+      "TAKEN": 'Przyjęte'
+    };
     $scope.categoryMap = {
       new: 'Nowe',
       mine: "Moje",
@@ -24,19 +30,21 @@ angular.module('petPatrolApp')
     };
 
     $scope.selectEvent = function (event) {
-      if (event.status === 'NEW') {
         $scope.selectedEvent = event;
-      }
     };
 
     $scope.selectCategory = function (category) {
-      $scope.selectedCategory = $scope.categoryMap[category];
-      eventDataService.search(category)
-        .then(function (autocompleteResults) {
-          $scope.events = autocompleteResults;
-          backupEvents = autocompleteResults;
-          $scope.selectedEvent = null;
-        });
+      if(category === 'mine') {
+        $scope.getUserEvents()
+      } else {
+        $scope.selectedCategory = $scope.categoryMap[category];
+        eventDataService.search(category)
+          .then(function (eventResults) {
+            $scope.events = eventResults;
+            backupEvents = eventResults;
+            $scope.selectedEvent = null;
+          });
+      }
     };
 
     $scope.getUserEvents = function () {
@@ -50,9 +58,34 @@ angular.module('petPatrolApp')
     };
 
     $scope.acceptEvent = function (id) {
-      $http.get("users/" + 1 + " /events/" + id + "/accept")
+      $http.post("users/" + 1 + " /events/" + id + "/accept", null)
         .then(function (response) {
-          window.location.href = "dashboard.html";
+          $scope.selectCategory('mine');
         });
+    };
+
+    $scope.rejectEvent = function (id) {
+      $http.post("users/" + 1 + " /events/" + id + "/reject", null)
+        .then(function (response) {
+          $scope.selectCategory('mine');
+        });
+    };
+
+    $scope.resetEvent = function (id) {
+      $http.post("users/" + 1 + " /events/" + id + "/reset", null)
+        .then(function (response) {
+          $scope.selectCategory('mine');
+        });
+    };
+
+    $scope.completeEvent = function (id) {
+      $http.post("users/" + 1 + " /events/" + id + "/complete", null)
+        .then(function (response) {
+          $scope.selectCategory('mine');
+        });
+    };
+
+    $scope.isImmutable = function() {
+      return $scope.selectedCategory !== 'new' || $scope.selectedCategory === 'rejected' || $scope.selectedCategory === 'done';
     };
   }]);

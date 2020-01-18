@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 public class EventController
 {
     private final DatabaseConfiguration configuration;
-
     private static final Map<String, Event.Status> STRING_STATUS_MAP = Map.of(
             "new", Event.Status.NEW,
             "rejected", Event.Status.REJECTED,
@@ -59,33 +58,11 @@ public class EventController
         configuration.getEvents().add(event);
     }
 
-    @GetMapping("users/{id}/events")
-    public List<Event> getUserEvents(@PathVariable Long id)
+    @PostMapping("events/{eventId}/reject")
+    public void rejectEvent(@PathVariable Long eventId)
     {
-        return configuration.getUsers().stream()
-                .filter(user -> user.getId().equals(id))
-                .flatMap(user -> user.getEvents().stream())
-                .map(this::getEventById)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-    }
-
-    @GetMapping("users/{id}/events/{eventId}/accept")
-    public void acceptEvent(@PathVariable Long id, @PathVariable Long eventId)
-    {
-        configuration.getUsers().stream()
-                .filter(user -> user.getId().equals(id))
-                .forEach(user -> user.getEvents().add(eventId));
-
         configuration.getEvents().stream()
                 .filter(event -> event.getId().equals(eventId))
-                .forEach(event -> event.setStatus(Event.Status.TAKEN));
-    }
-
-    private List<Event> getEventById(Long id)
-    {
-        return configuration.getEvents().stream()
-                .filter(event -> event.getId().equals(id))
-                .collect(Collectors.toList());
+                .forEach(event -> event.setStatus(Event.Status.REJECTED));
     }
 }
