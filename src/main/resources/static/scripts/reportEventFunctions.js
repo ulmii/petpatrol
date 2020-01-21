@@ -1,88 +1,3 @@
-'use strict';
-
-angular.module('petPatrolApp')
-  .controller('reportIncidentCtrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
-    $scope.incident = "Wybierz rodzaj zgłoszenia";
-    $scope.inne = null;
-    $scope.location = null;
-    $scope.optradio = "yes";
-    $scope.email = null;
-    $scope.description = null;
-    let id = null;
-
-    $scope.init = function () {
-      $http.get("/getEventId").then(function (response) {
-        id = response.data;
-        console.log(id);
-      });
-    };
-
-    $scope.setIncident = function (incident) {
-      $scope.incident = incident;
-    };
-
-    $scope.getAddres = function () {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        document.innerHTML = "Geolocation is not supported by this browser.";
-      }
-
-      function showPosition(position) {
-        $http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCaYeCmNWNFLv9XVeOYvCY4k4jLA7Gwa-Y").then(function (response) {
-          $scope.location = response.data.results[0].formatted_address;
-        });
-      }
-    };
-
-    $scope.uploadEvent = function () {
-      let alerts = [];
-      if ((isBlank($scope.inne) && $scope.incident === 'Inne') || $scope.incident === 'Wybierz rodzaj zgłoszenia') {
-        alerts.push("rodzaj zgłoszenia");
-      }
-      if (isBlank($scope.location)) {
-        alerts.push("lokalizacje");
-      }
-      if (isBlank($scope.description)) {
-        alerts.push("opis");
-      }
-      if (isBlank($scope.email) && $scope.optradio === 'yes') {
-        alerts.push("email");
-      }
-      if (filesToUpload.length <= 0) {
-        alerts.push("zdjecia");
-      }
-      if (alerts.length > 0) {
-        alert("Dodaj: " + alerts.join(", ") + "!");
-        return;
-      }
-
-      uploadFiles();
-      let data = {
-        id: id,
-        title: ($scope.incident === 'Inne') ? $scope.inne : $scope.incident,
-        location: $scope.location,
-        description: $scope.description,
-        email: $scope.email,
-        pictures: pictures
-      };
-
-      setTimeout(function () {
-        console.log(data);
-        $http.post("/events", data).then(function (response) {
-          if (response.status === 200) {
-            $("#successModal").modal('toggle');
-          } else {
-            $("#failureModal").modal('toggle');
-          }
-        }).catch((err) => {
-          console.error('An error occurred:', err.error);
-          $("#failureModal").modal('toggle');
-        });
-      }, 2000);
-    }
-  }]);
-
 function isBlank(str) {
   return (!str || /^\s*$/.test(str));
 }
@@ -199,4 +114,83 @@ function uploadFile(file, i) {
 
   formData.append('file', file);
   xhr.send(formData)
+}
+
+function initAutocomplete() {
+  var scope = angular.element($("div[ng-controller='reportEventCtrl']")).scope();
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -33.8688, lng: 151.2195},
+    zoom: 13,
+    mapTypeId: 'roadmap'
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function () {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function () {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function (marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function (place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      var myMarker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        title: place.name,
+        position: place.geometry.location
+      });
+
+      scope.$apply(function () {
+        scope.location = place.formatted_address;
+      });
+
+      // Create a marker for each place.
+      markers.push(myMarker);
+
+      google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+        $.get(
+          "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + evt.latLng.lat() + "," + evt.latLng.lng() + "&key=AIzaSyCaYeCmNWNFLv9XVeOYvCY4k4jLA7Gwa-Y",
+          function (response) {
+            scope.$apply(function () {
+              scope.location = response.results[0].formatted_address;
+            });
+          }
+        );
+      });
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
 }
