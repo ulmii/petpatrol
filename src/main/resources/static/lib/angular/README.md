@@ -31,7 +31,7 @@ bower install angular
 Then add a `<script>` to your `index.html`:
 
 ```html
-<script src="/bower_components/angular/angular.js"></script>
+<script src="/static/lib/angular/angular.js"></script>
 ```
 
 ## Documentation

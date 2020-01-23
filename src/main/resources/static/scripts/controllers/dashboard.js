@@ -18,6 +18,12 @@ angular.module('petPatrolApp')
       done: "Zamknięte",
       rejected: "Odrzucone"
     };
+    $scope.reverseCategoryMap = {
+      Nowe: 'new',
+      Moje: "mine",
+      Zamknięte: "done",
+      Odrzucone: "rejected"
+    };
 
     $scope.search = function () {
       $scope.events = backupEvents.filter(event =>
@@ -60,28 +66,28 @@ angular.module('petPatrolApp')
     $scope.acceptEvent = function (id) {
       $http.post("users/" + 1 + " /events/" + id + "/accept", null)
         .then(function (response) {
-          $scope.selectCategory('mine');
+          $scope.selectCategory($scope.reverseCategoryMap[$scope.selectedCategory]);
         });
     };
 
     $scope.rejectEvent = function (id) {
       $http.post("users/" + 1 + " /events/" + id + "/reject", null)
         .then(function (response) {
-          $scope.selectCategory('mine');
+          $scope.selectCategory($scope.reverseCategoryMap[$scope.selectedCategory]);
         });
     };
 
     $scope.resetEvent = function (id) {
       $http.post("users/" + 1 + " /events/" + id + "/reset", null)
         .then(function (response) {
-          $scope.selectCategory('mine');
+          $scope.selectCategory($scope.reverseCategoryMap[$scope.selectedCategory]);
         });
     };
 
     $scope.completeEvent = function (id) {
       $http.post("users/" + 1 + " /events/" + id + "/complete", null)
         .then(function (response) {
-          $scope.selectCategory('mine');
+          $scope.selectCategory($scope.reverseCategoryMap[$scope.selectedCategory]);
         });
     };
 
