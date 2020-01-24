@@ -1,0 +1,187 @@
+<!doctype html>
+<html ng-app="petPatrolApp" lang="en" xmlns:width="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>Pet Patrol</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="bower_components/jquery-ui-1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/fontawesome.min.css" type="text/css">
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <link href="lib/font-awesome/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/event.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+
+<body ng-app="petPatrolApp">
+<div ng-controller="reportEventCtrl" ng-init="init()" style="height: 100%">
+  <div style="position: absolute">
+    <div class="float-left mr-3 mt-3 col-2">
+      <a href="index.html">
+        <img src="images/petpatrol.png" class="img-fluid" alt="Logo">
+      </a>
+    </div>
+  </div>
+
+<nav class="fixed-top">
+  <div class="float-right mr-3 mt-3">
+    <a href="/login.html" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Zaloguj się do serwisu ratownika">
+      <img alt="Serwis ratownika" src="images/lifebuoy.png" width="50px">
+    </a>
+  </div>
+</nav>
+
+<div class="py-5 text-center  d-flex flex-column justify-content-center" style="background: #b4e2fa;background-size:cover">
+  <div class="container">
+    <div class="row">
+      <div class="bg-white p-5 col-md-8 col-10 mx-auto shadow justify-content-center" style="border-radius: 60px;z-index: 99;">
+
+        <div class="col-lg mx-auto">
+
+          <div class=" row mt-lg-1">
+            <h2 class="mx-auto">Opisz zajście czy coś xd</h2>
+            <input id="placeholder_event" style="width: 480px;" class="mt-1 mx-auto" ng-model="title" type="text" placeholder="Wpisz tytuł zgłoszenia">
+          </div>
+
+          <div class="row">
+            <div id="drop-area" class="mx-auto row mt-lg-4">
+              <form method="POST" enctype="multipart/form-data" action="/files" class="text-center my-form mx-auto">
+                <p class="mx-auto">Dodaj zdjęcia przedstawiające miejsce zdarzenia</p>
+                <input class="mx-auto" type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                <label class="button mx-auto" for="fileElem">Wybierz lub upuść pliki</label>
+              </form>
+              <div class="mx-auto text-center" id="gallery"></div>
+            </div>
+          </div>
+
+          <div class="container mx-auto mt-lg-4 justify-content-around">
+            <div class="row" style="width: 480px">
+              <input id="map-text" class="col" type="text" ng-model="location">
+              <a href="#">
+                <i class="fas fa-map-marker-alt col-md-auto" ng-click="showMaps()" style="font-size: 25px"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="container" >
+            <div class="row mt-lg-4">
+              <label class="event-label">
+                Opisz miejsce zdarzenia oraz podaj jak najwięcej informacji o nim.
+                <textarea ng-model="description" rows="4" cols="40" style="width: 480px"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="container">
+              <label class="event-label mt-lg-3">
+                Czy chcesz zostać powiadomiony o dalszym losie zwierzaka?
+              </label>
+            <div class="row mt-1 justify-content-sm-around">
+              <div class="radio">
+                <label><input class="mr-2" type="radio" ng-model="optradio" value="yes" name="optradio" checked>Tak, chcę zostać powiadomiony</label>
+              </div>
+              <div class="ml-4 radio justify-content-center">
+                <label><input class="mr-2" type="radio" ng-model="optradio" value="no" name="optradio">Nie</label>
+              </div>
+            </div>
+          </div>
+
+          <div ng-show="optradio == 'yes'"class="container">
+            <div class="row mt-lg-1">
+              <label class="col text-center mx-auto">
+                <input id="placeholder_event2"  style="width:480px" placeholder="Adres e-mail" type="text" name="email" ng-model="email">
+              </label>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row mx-auto mt-3">
+              <button class="mx-auto btn btn-primary" type="button" ng-click="uploadEvent()">
+                Zgłoś
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modals -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Dziękujemy!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="window.location='/index.html'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Dziękujemy za zgłoszenie, jeśli wybrałeś opcję powiadomień, to na biężąco będziemy cię informować o stanie zgłoszenia!
+      </div>
+      <div class="modal-footer">
+        <a href="index.html">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="window.location= '/index.html'">Zamknij</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div style="position: absolute; left: 50%;" class="modal-dialog" >
+    <div style="position: relative; left: -50%" class="modal-content">
+      <input ng-model="location" id="pac-input" class="controls" type="text" placeholder="Search Box">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="failureModal" tabindex="-1" role="dialog" aria-labelledby="failureModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="failureModalLabel">Coś poszło nie tak :( </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Nie udało sie wysłać zgłoszenia do serwera.
+      </div>
+      <div class="modal-footer">
+        <a href="index.html">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<img style="position: fixed; bottom:0; left:0; z-index: 0" src="images/lap.svg"/>
+
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="lib/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="lib/popper/popper.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/controllers/reportEvent.js"></script>
+<script type="text/javascript" src="scripts/reportEventFunctions.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaYeCmNWNFLv9XVeOYvCY4k4jLA7Gwa-Y&libraries=places&callback=initAutocomplete"
+        async defer></script>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+</body>
+</html>

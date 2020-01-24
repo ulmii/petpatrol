@@ -95,6 +95,7 @@ ul ul a {
 
 .button {
     /*display: inline-block;*/
+    font-family: Poppins, sans-serif;
     padding: 10px;
     background: #ccc;
     cursor: pointer;
@@ -154,4 +155,21 @@ ul ul a {
 
 .pac-container {
     z-index: 5000;
+}
+
+#placeholder_event {
+    color: #a2a2a2 !important;
+    font-family: Poppins, sans-serif !important;
+
+}
+
+#placeholder_event2 {
+    color: #a2a2a2 !important;
+    font-family: Poppins, sans-serif !important;
+
+}
+
+#map-text {
+    font-family: Poppins, sans-serif !important;
+
 }
