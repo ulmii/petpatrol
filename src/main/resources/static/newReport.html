@@ -5,18 +5,17 @@
   <title>Pet Patrol</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="bower_components/jquery-ui-1.12.1/jquery-ui.min.css">
-  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="bower_components/font-awesome/css/fontawesome.min.css" type="text/css">
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
   <link href="lib/font-awesome/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/event.css">
   <link rel="stylesheet" href="css/theme.css">
 </head>
 
-<body ng-app="petPatrolApp">
-<div ng-controller="reportEventCtrl" ng-init="init()" style="height: 100%">
-  <div style="position: absolute">
+
+<body ng-controller="reportEventCtrl" style="background: url('/images/lap.svg')"  ng-init="init()" ng-app="petPatrolApp">
+<img style="position: fixed; bottom:0; left:0; z-index: 0" src="images/lap.svg"/>
+
+  <div style="position: fixed; z-index: 100">
     <div class="float-left mr-3 mt-3 col-2">
       <a href="index.html">
         <img src="images/petpatrol.png" class="img-fluid" alt="Logo">
@@ -24,13 +23,13 @@
     </div>
   </div>
 
-<nav class="fixed-top">
-  <div class="float-right mr-3 mt-3">
-    <a href="/login.html" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Zaloguj się do serwisu ratownika">
-      <img alt="Serwis ratownika" src="images/lifebuoy.png" width="50px">
-    </a>
-  </div>
-</nav>
+<!--<nav class="fixed-top">-->
+<!--  <div class="float-right mr-3 mt-3">-->
+<!--    <a href="/login.html" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Zaloguj się do serwisu ratownika">-->
+<!--      <img alt="Serwis ratownika" src="images/lifebuoy.png" width="50px">-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</nav>-->
 
 <div class="py-5 text-center  d-flex flex-column justify-content-center" style="background: #b4e2fa;background-size:cover">
   <div class="container">
@@ -109,7 +108,7 @@
     </div>
   </div>
 </div>
-
+<progress id="progress-bar" style="display: none" max=100 value=0></progress>
 
 <!-- Modals -->
 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -162,11 +161,6 @@
     </div>
   </div>
 </div>
-</div>
-
-
-
-<img style="position: fixed; bottom:0; left:0; z-index: 0" src="images/lap.svg"/>
 
 <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="lib/angular/angular.js"></script>
