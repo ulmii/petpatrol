@@ -10,8 +10,8 @@
   <link href="lib/font-awesome/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/event.css">
   <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/custom.css">
 </head>
-
 
 <body ng-controller="reportEventCtrl" ng-init="init()" ng-app="petPatrolApp">
 <img style="position: fixed; bottom:0; left:0; z-index: 0" src="images/lap.svg"/>
@@ -78,7 +78,7 @@
             </label>
             <div class="row mt-1 justify-content-sm-around">
               <div class="radio">
-                <label><input class="mr-2" type="radio" ng-model="optradio" value="yes" name="optradio" checked>Tak, chcę zostać powiadomiony</label>
+                <label class="font-julka"><input class="mr-2" type="radio" ng-model="optradio" value="yes" name="optradio" checked>Tak, chcę zostać powiadomiony</label>
               </div>
               <div class="ml-4 radio justify-content-center">
                 <label><input class="mr-2" type="radio" ng-model="optradio" value="no" name="optradio">Nie</label>
