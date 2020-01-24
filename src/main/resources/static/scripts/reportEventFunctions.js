@@ -117,7 +117,7 @@ function uploadFile(file, i) {
 }
 
 function initAutocomplete() {
-  var scope = angular.element($("div[ng-controller='reportEventCtrl']")).scope();
+  var scope = angular.element($("body[ng-controller='reportEventCtrl']")).scope();
 
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -33.8688, lng: 151.2195},
