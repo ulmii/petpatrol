@@ -17,6 +17,11 @@
   .event:hover {
     opacity: 0.7;
   }
+
+  .btn-primary {
+    background-color: #12bbad!important;
+    border-color: #12bbad!important;
+  }
 </style>
 
 <body ng-app="petPatrolApp">
@@ -189,8 +194,28 @@
       </div>
     </div>
   </div>
-</div>
 
+<div class="modal fade" id="completeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Zgłoszenie oznaczone jako zakończone!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="window.location='/index.html'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Użytkownik wyraził chęć zostania powiadomionym o statusie zgłoszenia, jeśli to możliwe napisz jak zdarzenie zostało rozwiązane!
+        <textarea class="form-control"></textarea>
+      </div>
+      <div class="modal-footer">
+        <a href="index.html">
+          <button type="button" class="btn btn-primary"  data-dismiss="modal">Zamknij</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="lib/angular/angular.js"></script>

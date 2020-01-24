@@ -88,6 +88,9 @@ angular.module('petPatrolApp')
       $http.post("users/" + 1 + " /events/" + id + "/complete", null)
         .then(function (response) {
           $scope.selectCategory($scope.reverseCategoryMap[$scope.selectedCategory]);
+          if($scope.selectedEvent.email) {
+            $("#completeModal").modal('toggle');
+          }
         });
     };
 
