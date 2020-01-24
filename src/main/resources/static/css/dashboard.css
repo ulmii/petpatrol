@@ -56,7 +56,7 @@ a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
+    background: #b4e2fa;
     color: #fff;
     transition: all 0.3s;
 }
@@ -85,19 +85,19 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #17a2b8;
     background: #fff;
 }
 
 .selectedCategory {
-    color: #7386D5 !important;
+    color: #17a2b8 !important;
     background: #fff;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #b4e2fa;
 }
 
 a[data-toggle="collapse"] {
@@ -115,7 +115,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #17a2b8;
 }
 
 ul.CTAs {
@@ -132,12 +132,12 @@ ul.CTAs a {
 
 a.download {
     background: #fff;
-    color: #7386D5;
+    color: #17a2b8;
 }
 
 a.article,
 a.article:hover {
-    background: #6d7fcc !important;
+    background: #17a2b8 !important;
     color: #fff !important;
 }
 
@@ -167,3 +167,4 @@ a.article:hover {
         display: none;
     }
 }
+
