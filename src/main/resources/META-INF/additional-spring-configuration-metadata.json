@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "database.pictures",
+      "type": "java.lang.String",
+      "description": "Description for database.pictures."
+    },
+    {
+      "name": "database.events",
+      "type": "java.lang.String",
+      "description": "Description for database.events."
+    },
+    {
+      "name": "database.users",
+      "type": "java.lang.String",
+      "description": "Description for database.users."
+    },
+    {
+      "name": "file",
+      "type": "java.lang.String",
+      "description": "Description for file."
+    }
+  ] }
