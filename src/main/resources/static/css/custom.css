@@ -1,3 +1,7 @@
 .font-julka {
-    font-family: Consolas, sans-serif !important;
+    font-family: Poppins, sans-serif !important;
+    font-size:12px;
+}
+.font-julka2 {
+    font-family: Helvetica, sans-serif !important;
 }
