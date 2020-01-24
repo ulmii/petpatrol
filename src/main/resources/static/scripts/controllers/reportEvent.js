@@ -11,6 +11,7 @@ angular.module('petPatrolApp')
       lat: null,
       lng: null
     };
+    $scope.isUploading = false;
     let id = null;
 
     $scope.init = function () {
@@ -66,7 +67,7 @@ angular.module('petPatrolApp')
         alert("Dodaj: " + alerts.join(", ") + "!");
         return;
       }
-
+      $scope.isUploading = true;
       uploadFiles();
       let data = {
         id: id,
@@ -80,12 +81,14 @@ angular.module('petPatrolApp')
       setTimeout(function () {
         console.log(data);
         $http.post("/events", data).then(function (response) {
+          $scope.isUploading = false;
           if (response.status === 200) {
             $("#successModal").modal('toggle');
           } else {
             $("#failureModal").modal('toggle');
           }
         }).catch((err) => {
+          $scope.isUploading = false;
           console.error('An error occurred:', err.error);
           $("#failureModal").modal('toggle');
         });
