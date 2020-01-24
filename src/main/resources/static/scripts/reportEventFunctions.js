@@ -120,7 +120,7 @@ function initAutocomplete() {
   var scope = angular.element($("body[ng-controller='reportEventCtrl']")).scope();
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -33.8688, lng: 151.2195},
+    center: {lat: 50.029800, lng: 19.905820},
     zoom: 13,
     mapTypeId: 'roadmap'
   });
