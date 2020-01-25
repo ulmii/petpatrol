@@ -25,11 +25,11 @@
 <div class="py-5 text-center w-100 h-100 d-flex flex-column justify-content-center" style="background: #b4e2fa;background-size:cover">
   <div class="container">
     <div class="row">
-      <div class="bg-white p-5 col-md-8 col-10 mx-auto shadow justify-content-center" style="border-radius: 30px;z-index: 99;">
+      <div id="fade" class="bg-white p-5 col-md-8 col-10 mx-auto shadow justify-content-center" style="display:none; border-radius: 30px;z-index: 99;">
         <img class="img-fluid d-block mx-auto w-50" src="images/petpatrol.png">
         <p class="lead mb-3 my-3">Uratuj zwierzaka!</p>
         <p class="mb-4">Pomoc zwierzętom zawsze była ważna, ale jeszcze nigdy nie była tak prosta. <a href="/about.html">Dowiedz się więcej.</a></p>
-        <a class="btn btn-primary w-25 shadow-none" href="/newReport.html">Zgłoś</a>
+        <a class="btn btn-primary w-25 shadow-none" data-transition="pop" href="/newReport.html">Zgłoś</a>
       </div>
     </div>
   </div>
@@ -49,7 +49,11 @@
 <script>
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-  })
+  });
+
+  $(document).ready(function(){
+    $("#fade").fadeIn(750);
+  });
 </script>
 </body>
 </html>

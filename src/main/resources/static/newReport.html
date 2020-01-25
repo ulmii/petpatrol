@@ -28,7 +28,7 @@
 <div class="py-5 text-center  d-flex flex-column justify-content-center" style="background: #b4e2fa;background-size:cover">
   <div class="container">
     <div class="row">
-      <div class="bg-white p-5 col-md-8 col-10 mx-auto shadow justify-content-center" style="border-radius: 60px;z-index: 99;">
+      <div id="fade"  class="bg-white p-5 col-md-8 col-10 mx-auto shadow justify-content-center" style="display:none!important; border-radius: 60px;z-index: 99;">
 
         <div class="col-lg mx-auto">
           <h2 class="mx-auto " >Opisz zgłoszenie</h2>
@@ -172,6 +172,10 @@
 
   $('#successModal').on('hidden.bs.modal', function () {
     window.location = '/index.html'
+  });
+
+  $(document).ready(function(){
+    $("#fade").fadeIn(750);
   });
 </script>
 </body>
