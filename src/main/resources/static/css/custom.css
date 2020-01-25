@@ -8,9 +8,7 @@
     line-height: 1.4em;
 }
 
-
 body {background: #F0F0F0;}
-
 
 h2 {margin-left: 50px;}
 
@@ -26,9 +24,9 @@ textarea {
     border-style: none none none none;
     border-width: medium 1px 1px medium;
     box-shadow: 2px 2px 2px rgba(225, 225, 225, 0.75);
-    color: #7b7b7b;
+    color: #5b5b5b;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 1em;
+    font-size: 15px;
     line-height: 1.4em;
     padding: 5px 8px;
     transition: background-color 0.2s ease 0s;
@@ -65,3 +63,49 @@ input:focus {
     outline-width: 0;
 }
 
+
+
+.form-radio
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: center;
+    background-color: #f1f1f1;
+    color: #666;
+    top: 15px;
+    height: 15px;
+    width: 15px;
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-right: 15px;
+    outline: none;
+}
+.form-radio:checked::before
+{
+    position: relative;
+    font: 12px 'Open Sans', sans-serif;
+    left: 4px;
+    top: -3px;
+    content: '\2713';
+    transform: rotate(40deg);
+}
+.form-radio:hover
+{
+    background-color: #f7f7f7;
+}
+.form-radio:checked
+{
+    background-color: #f1f1f1;
+}
+label
+{
+    font: 12px/1.7 'Poppins', sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    position: relative;
+}

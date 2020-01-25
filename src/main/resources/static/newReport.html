@@ -69,20 +69,20 @@
             <label class="event-label mt-lg-3">
               Czy chcesz zostać powiadomiony o dalszym losie zwierzaka?
             </label>
-            <div class="row mt-1 justify-content-sm-around">
-              <div class="radio mt-0">
-                <label class="font-julka"><input class="mr-2" type="radio" ng-model="optradio" value="yes" name="optradio" checked>Tak, chcę zostać powiadomiony</label>
+            <div class="radio mt-0">
+              <div class="radio mt-0 ">
+                <input type="radio" ng-model="optradio" name="optradio" value="yes" id="radio-one" class="form-radio" checked><label for="radio-one">Tak, chcę zostać powiadomiony.</label>
               </div>
               <div class="ml-10 radio justify-content-center">
-                <label class="font-julka"><input class="mr-2" type="radio" ng-model="optradio" value="no" name="optradio">Nie</label>
+                <input type="radio" ng-model="optradio" name="optradio" value="no" id="radio-two" class="form-radio" checked><label for="radio-one">Nie.</label>
               </div>
             </div>
-          </div>
+            </div>
 
           <div ng-show="optradio == 'yes'" class="container">
             <div class="row mt-lg-1">
               <label class="col text-center mx-auto">
-                <input id="placeholder_event2" style="width:480px" placeholder="Adres e-mail" type="text" name="email" ng-model="email">
+                <input id="placeholder_event2" style="width:480px"  placeholder="Adres e-mail" type="text" name="email" ng-model="email">
               </label>
             </div>
           </div>
