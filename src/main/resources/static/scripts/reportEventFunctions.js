@@ -175,7 +175,7 @@ function initAutocomplete() {
 
       google.maps.event.addListener(myMarker, 'dragend', function (evt) {
         $.get(
-          "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + evt.latLng.lat() + "," + evt.latLng.lng() + "&key=AIzaSyCaYeCmNWNFLv9XVeOYvCY4k4jLA7Gwa-Y",
+          "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + evt.latLng.lat() + "," + evt.latLng.lng() + "&key=AIzaSyBT6ALF0NpSAfhDPNQ0aI279UDrYRY6U7w",
           function (response) {
             scope.$apply(function () {
               scope.location = response.results[0].formatted_address;
