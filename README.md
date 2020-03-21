@@ -3,7 +3,7 @@ Web application made for a school project. Allows users to report abuse of anima
 
 ## Implementation
 This project was done for a course in UI design so some of the functionality is missing.  
-Backend has a mocked database that is configured in the yml file, with every restart of the application it resets to the initial state.
+Backend has a mocked database that is configured in the yml file, with every restart of the application it resets to the initial state.  User log in is also mocked for only one account.
 Frontend communicates with the server via REST endpoints, images in reports are sent in a multipart file to a different endpoint that stores them.  
 UI functionality is done mostly by angularJs controllers.
 
