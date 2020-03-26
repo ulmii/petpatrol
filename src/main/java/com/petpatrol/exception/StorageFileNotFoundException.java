@@ -1,4 +1,4 @@
-package com.example.angularjs.exception;
+package com.petpatrol.exception;
 
 public class StorageFileNotFoundException extends StorageException {
 

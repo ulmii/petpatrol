@@ -1,8 +1,8 @@
-package com.example.angularjs.controller;
+package com.petpatrol.controller;
 
-import com.example.angularjs.configuration.DatabaseConfiguration;
-import com.example.angularjs.configuration.StorageProperties;
-import com.example.angularjs.model.Event;
+import com.petpatrol.configuration.DatabaseConfiguration;
+import com.petpatrol.configuration.StorageProperties;
+import com.petpatrol.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;

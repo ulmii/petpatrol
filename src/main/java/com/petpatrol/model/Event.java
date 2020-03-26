@@ -1,4 +1,4 @@
-package com.example.angularjs.model;
+package com.petpatrol.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
-package com.example.angularjs.service;
+package com.petpatrol.service;
 
-import com.example.angularjs.configuration.StorageProperties;
-import com.example.angularjs.exception.StorageException;
-import com.example.angularjs.exception.StorageFileNotFoundException;
+import com.petpatrol.configuration.StorageProperties;
+import com.petpatrol.exception.StorageException;
+import com.petpatrol.exception.StorageFileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;

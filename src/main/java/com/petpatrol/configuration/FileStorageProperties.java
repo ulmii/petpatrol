@@ -1,4 +1,4 @@
-package com.example.angularjs.configuration;
+package com.petpatrol.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

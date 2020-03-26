@@ -1,17 +1,19 @@
-package com.example.angularjs.model;
+package com.petpatrol.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Picture
+public class User
 {
     private Long id;
-    private String path;
+    private String name;
+    private List<Long> events;
 }

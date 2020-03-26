@@ -1,11 +1,8 @@
-package com.example.angularjs.service;
+package com.petpatrol.service;
 
-import com.example.angularjs.configuration.DatabaseConfiguration;
-import com.example.angularjs.model.User;
+import com.petpatrol.configuration.DatabaseConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserService

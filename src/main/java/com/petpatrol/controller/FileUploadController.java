@@ -1,11 +1,10 @@
-package com.example.angularjs.controller;
+package com.petpatrol.controller;
 
-import com.example.angularjs.configuration.DatabaseConfiguration;
-import com.example.angularjs.configuration.StorageProperties;
-import com.example.angularjs.exception.StorageFileNotFoundException;
-import com.example.angularjs.model.Picture;
-import com.example.angularjs.model.UploadFileResponse;
-import com.example.angularjs.service.StorageService;
+import com.petpatrol.configuration.DatabaseConfiguration;
+import com.petpatrol.configuration.StorageProperties;
+import com.petpatrol.exception.StorageFileNotFoundException;
+import com.petpatrol.model.Picture;
+import com.petpatrol.service.StorageService;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;

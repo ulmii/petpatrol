@@ -1,17 +1,12 @@
-package com.example.angularjs.controller;
+package com.petpatrol.controller;
 
-import com.example.angularjs.configuration.DatabaseConfiguration;
-import com.example.angularjs.model.Event;
-import com.example.angularjs.model.User;
-import com.example.angularjs.service.UserService;
+import com.petpatrol.configuration.DatabaseConfiguration;
+import com.petpatrol.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collection;
 import java.util.List;

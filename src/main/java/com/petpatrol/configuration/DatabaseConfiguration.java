@@ -1,18 +1,13 @@
-package com.example.angularjs.configuration;
+package com.petpatrol.configuration;
 
-import com.example.angularjs.model.Event;
-import com.example.angularjs.model.Picture;
-import com.example.angularjs.model.User;
-import com.example.angularjs.service.FileSystemStorageService;
+import com.petpatrol.model.Event;
+import com.petpatrol.model.Picture;
+import com.petpatrol.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 
 @Data

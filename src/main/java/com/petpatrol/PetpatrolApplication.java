@@ -1,8 +1,8 @@
-package com.example.angularjs;
+package com.petpatrol;
 
-import com.example.angularjs.configuration.FileStorageProperties;
-import com.example.angularjs.configuration.StorageProperties;
-import com.example.angularjs.service.FileSystemStorageService;
+import com.petpatrol.configuration.FileStorageProperties;
+import com.petpatrol.configuration.StorageProperties;
+import com.petpatrol.service.FileSystemStorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,11 +13,11 @@ import org.springframework.context.annotation.Bean;
 @EnableCircuitBreaker
 @EnableConfigurationProperties({ StorageProperties.class, FileStorageProperties.class })
 @SpringBootApplication
-public class AngularjsApplication
+public class PetpatrolApplication
 {
     public static void main(String[] args)
     {
-        SpringApplication.run(AngularjsApplication.class, args);
+        SpringApplication.run(PetpatrolApplication.class, args);
     }
 
     @Bean

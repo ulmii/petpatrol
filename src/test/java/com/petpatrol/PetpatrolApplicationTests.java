@@ -1,10 +1,10 @@
-package com.example.angularjs;
+package com.petpatrol;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AngularjsApplicationTests
+class PetpatrolApplicationTests
 {
 
     @Test
